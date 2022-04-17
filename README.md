@@ -16,7 +16,7 @@ paru -S opencl-legacy-amdgpu-pro
 ```
 And for 32-bit libraries, use
 ```bash
-paru -S opencl-legacy-amdgpu-pro
+paru -S lib32-opencl-legacy-amdgpu-pro
 ```
 
 .
