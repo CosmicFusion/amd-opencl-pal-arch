@@ -85,9 +85,11 @@ patch32() {
 package_opencl-legacy-amdgpu-pro () {
     pkgdesc="Legacy non-free AMD OpenCL ICD Loaders (PAL)"
     license=('custom: AMDGPU-PRO EULA')
-    provides=("opencl-orca-amdgpu-pro-icd" "opencl-driver")
-
-    get_debs_64
+    conflicts=('rocm-opencl-runtime')
+	provides=("opencl-orca-amdgpu-pro-icd" "opencl-driver")
+	optdepends=('clinfo' 'rocm-opencl-runtime')
+    
+	get_debs_64
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-legacy-amdgpu-pro-icd_${major}-${minor}_amd64.deb
     move_libdir "opt/amdgpu-pro/lib/x86_64-linux-gnu" "usr/lib"
     move_copyright
@@ -98,7 +100,8 @@ package_lib32-opencl-legacy-amdgpu-pro () {
     pkgdesc="Legacy non-free AMD OpenCL ICD Loaders (PAL) (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     depends=("opencl-legacy-amdgpu-pro")
-    provides=("lib32-opencl-orca-amdgpu-pro-icd" "lib32-opencl-driver")
+    conflicts=('rocm-opencl-runtime')
+	provides=("lib32-opencl-orca-amdgpu-pro-icd" "lib32-opencl-driver")
 
     get_debs_32
     extract_deb "${srcdir}"/amdgpu-pro-${major}-${minor}-ubuntu-${ubuntu_ver}/opencl-legacy-amdgpu-pro-icd_${major}-${minor}_i386.deb
